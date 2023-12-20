@@ -88,9 +88,14 @@ const Users = () => {
           axios
             .get(baseURL)
             .then((res) => {
+              const selectedUsersCopy = [...selectedUsers];
               setUsers([...res.data]);
               setSelectedUsers([]);
               setIsUsersLoaded(true);
+              if (selectedUsersCopy.length === users.length) {
+                localStorage.clear();
+                navigate("/login");
+              }
             })
             .catch((error) => {
               console.log(error);

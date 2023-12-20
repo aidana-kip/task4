@@ -30,9 +30,8 @@ function Register() {
       .then((res) => {
         if (res.status === 201) {
           navigate("/login");
-        } else if (res.status == 400) {
-          console.log("dsad");
-          setError("dsads");
+        } else if (res.status === 400) {
+          setError(res.data.message);
         }
       })
       .catch((err) => {
